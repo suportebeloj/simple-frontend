@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'aws_agent'
+    }
     stages {
         stage('Project dependencies') {
             steps {
@@ -7,7 +9,7 @@ pipeline {
             }
         }
 
-        stage ('Build') {
+        stage('Build') {
             steps {
                 sh 'yarn build'
             }
@@ -23,7 +25,7 @@ pipeline {
         stage('Setup Nginx') {
             steps {
                 sh """
-                
+
                 """
             }
         }

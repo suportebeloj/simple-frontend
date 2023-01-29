@@ -9,23 +9,26 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build'){
             steps {
                 sh 'yarn build'
             }
         }
 
-        stage ('Deploy app')
+        stage ('Deploy app') {
             steps {
                 sh """
                 chmod +x deploy.sh
                 ./deploy.sh
                 """
             }
+        }
+            
         stage('Setup Nginx') {
             steps {
                 sh """
-
+                chmod +x nginxsetup.sh
+                ./nginxsetup.sh
                 """
             }
         }
